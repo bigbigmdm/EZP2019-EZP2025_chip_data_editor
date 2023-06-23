@@ -10,3 +10,11 @@ For save the changes in binary file press the button save ![save](img/save.png).
 For deleting the strings select one or more strings and press the delete button ![delete](img/del.png).
 
 You can moving the selected string use the arrow buttons (![undo](img/undo.png) and ![redo](img/redo.png)).
+
+You can copying the selected string use the plus button ![plus](img/plus.png).
+
+The selected strings may be converted info .CSV format by pressing the button ![tocsv](img/tocsv.png). 
+
+If you want convert all strings in to .CSV file use the 'Export to CSV' ![tocsv](img/tocsv.png) in file menu.
+
+If you want import .CSV database in to program use 'Import from CSV' ![import](img/import.png) in file menu.
