@@ -3,4 +3,4 @@ QT based editor  chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025,
 
 ![Screenshot editor](https://github.com/bigbigmdm/EZP2019-EZP2025_chip_data_editor/blob/main/img/ezp_editor.png)
 
-Press the button ![read](img/read.png)
+Press the button ![read](img/open.png)
