@@ -15,8 +15,8 @@ You can copying the selected string use the plus button ![plus](img/plus.png).
 
 The selected strings may be converted info .CSV format by pressing the button ![tocsv](img/tocsv.png). 
 
-If you want convert all strings in to .CSV file use the `Export to CSV` ![tocsv](img/tocsv.png) in file menu.
+If you want convert all strings in to .CSV file use the `Export to CSV` ![tocsv](img/tocsv.png) in `File` menu.
 
-If you want import .CSV database in to program use `Import from CSV` ![import](img/import.png) in file menu.
+If you want import .CSV database in to program use `Import from CSV` ![import](img/import.png) in `File` menu.
 
 Any cell is editable.
