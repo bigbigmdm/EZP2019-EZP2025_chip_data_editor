@@ -100,7 +100,7 @@ void MainWindow::on_actionOpen_triggered()
                  }
              j++;
              i = 0;
-             while ((i < 0x30) && (data[recNo * 0x44 + j] != 0x00)) // ASCII data reading
+             while ((i < 0x30) && (data[recNo * 0x44 + j] != '\0')) // ASCII data reading
              {
                  txtBuf[i] = data[recNo * 0x44 + j];
                  j++;
@@ -161,7 +161,7 @@ void MainWindow::on_actionOpen_triggered()
              model->setItem(recNo, 3, item);
              item = new QStandardItem(chips[recNo].chipSize);
              model->setItem(recNo, 4, item);
-             item = new QStandardItem(chips[recNo].blockSize);
+             item = new QStardItem(chips[recNo].blockSize);
              model->setItem(recNo, 5, item);
              item = new QStandardItem(chips[recNo].chipTypeHex);
              model->setItem(recNo, 6, item);
@@ -477,12 +477,12 @@ unsigned char MainWindow::dualDigitToByte(QString q, int poz)
      {
         poz = poz *2;
         buf = q[poz + 2].toLatin1();
-        if ((buf >= '0') and (buf <= '9')) buf = buf - 0x30;
-        if ((buf >= 'A') and (buf <= 'F')) buf = buf - 0x37;
+        if ((buf >= '0') && (buf <= '9')) buf = buf - 0x30;
+        if ((buf >= 'A') && (buf <= 'F')) buf = buf - 0x37;
         rez = buf * 0x10;
         buf = q[poz + 3].toLatin1();
-        if ((buf >= '0') and (buf <= '9')) buf = buf - 0x30;
-        if ((buf >= 'A') and (buf <= 'F')) buf = buf - 0x37;
+        if ((buf >= '0') && (buf <= '9')) buf = buf - 0x30;
+        if ((buf >= 'A') && (buf <= 'F')) buf = buf - 0x37;
         rez = rez + buf;
        return rez;
      }
