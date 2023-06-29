@@ -477,14 +477,14 @@ unsigned char MainWindow::dualDigitToByte(QString q, int poz)
      {
         poz = poz *2;
         buf = q[poz + 2].toLatin1();
-        if ((buf >= '0') and (buf <= '9')) buf = buf - 0x30;
-        if ((buf >= 'A') and (buf <= 'F')) buf = buf - 0x37;
-        if ((buf >= 'a') and (buf <= 'f')) buf = buf - 0x57;
+        if ((buf >= '0') && (buf <= '9')) buf = buf - 0x30;
+        if ((buf >= 'A') && (buf <= 'F')) buf = buf - 0x37;
+        if ((buf >= 'a') && (buf <= 'f')) buf = buf - 0x57;
         rez = buf * 0x10;
         buf = q[poz + 3].toLatin1();
-        if ((buf >= '0') and (buf <= '9')) buf = buf - 0x30;
-        if ((buf >= 'A') and (buf <= 'F')) buf = buf - 0x37;
-        if ((buf >= 'a') and (buf <= 'f')) buf = buf - 0x57;
+        if ((buf >= '0') && (buf <= '9')) buf = buf - 0x30;
+        if ((buf >= 'A') && (buf <= 'F')) buf = buf - 0x37;
+        if ((buf >= 'a') && (buf <= 'f')) buf = buf - 0x57;
         rez = rez + buf;
        return rez;
      }
