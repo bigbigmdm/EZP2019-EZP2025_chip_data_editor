@@ -161,7 +161,7 @@ void MainWindow::on_actionOpen_triggered()
              model->setItem(recNo, 3, item);
              item = new QStandardItem(chips[recNo].chipSize);
              model->setItem(recNo, 4, item);
-             item = new QStardItem(chips[recNo].blockSize);
+             item = new QStandardItem(chips[recNo].blockSize);
              model->setItem(recNo, 5, item);
              item = new QStandardItem(chips[recNo].chipTypeHex);
              model->setItem(recNo, 6, item);
