@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>EZP File Editor</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTableView" name="tableView">
@@ -210,7 +210,7 @@
     <string>Import from CSV</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+, Ctrl+Shift+X</string>
+    <string>, Ctrl+Shift+X</string>
    </property>
   </action>
  </widget>
