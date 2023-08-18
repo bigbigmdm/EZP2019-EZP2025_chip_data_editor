@@ -22,4 +22,11 @@ If you want import .CSV database in to program use `Import from CSV` ![import](i
 Any cell is editable.
 
 
-Installing:
+## Building
+
+```
+mkdir build
+cd build
+cmake ..
+make -j4
+```
