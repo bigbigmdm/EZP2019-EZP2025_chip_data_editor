@@ -31,3 +31,9 @@ add_executable(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} Qt5::Core)
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+
+
+install(TARGETS ${PROJECT_NAME} DESTINATION /opt/ezp_editor)
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/other/ezp_editor.desktop" DESTINATION /opt/ezp_editor)
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/other/ezp_editor.desktop" DESTINATION /usr/share/applications)
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/img/chipEdit64.png" DESTINATION /opt/ezp_editor)
