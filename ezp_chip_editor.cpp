@@ -41,9 +41,9 @@ void MainWindow::on_actionOpen_triggered()
     char txtBuf[0x30];
     int i, j, recNo, dataPoz, dataSize, chipSize, blockSize, delay, rowCount;
     unsigned char chipSizeCode, chipID, manCode, tmpBuf;
-    ui->statusBar->showMessage("Opening file");
+    ui->statusBar->showMessage(tr("Opening file"));
     fileName = QFileDialog::getOpenFileName(this,
-                                QString::fromUtf8("Открыть файл"),
+                                QString(tr("Opening file")),
                                 QDir::currentPath(),
                                 "Data Images (*.Dat);;All files (*.*)");
     ui->statusBar->showMessage("Current file: " + fileName);
@@ -71,19 +71,19 @@ void MainWindow::on_actionOpen_triggered()
     //Заголовки столбцов
     QStringList horizontalHeader;
     //horizontalHeader.append("No");
-    horizontalHeader.append("Type");
-    horizontalHeader.append("Manufacture");
-    horizontalHeader.append("IC Name");
-    horizontalHeader.append("JEDEC ID");
-    horizontalHeader.append("Size");
-    horizontalHeader.append("Block\nsize");
-    horizontalHeader.append("Type\nHEX");
-    horizontalHeader.append("Algo-\nrithm");
-    horizontalHeader.append("Delay");
-    horizontalHeader.append("Extend");
-    horizontalHeader.append("EEPROM");
-    horizontalHeader.append("EEPROM\npages");
-    horizontalHeader.append("VCC");
+    horizontalHeader.append(tr("Type"));
+    horizontalHeader.append(tr("Manufacture"));
+    horizontalHeader.append(tr("IC Name"));
+    horizontalHeader.append(tr("JEDEC ID"));
+    horizontalHeader.append(tr("Size"));
+    horizontalHeader.append(tr("Block\nsize"));
+    horizontalHeader.append(tr("Type\nHEX"));
+    horizontalHeader.append(tr("Algo-\nrithm"));
+    horizontalHeader.append(tr("Delay"));
+    horizontalHeader.append(tr("Extend"));
+    horizontalHeader.append(tr("EEPROM"));
+    horizontalHeader.append(tr("EEPROM\npages"));
+    horizontalHeader.append(tr("VCC"));
     model->setHorizontalHeaderLabels(horizontalHeader);
 
     //parsing qbytearray
@@ -226,8 +226,6 @@ void MainWindow::on_actionOpen_triggered()
     //-combobox Block Size
     chBlSizeDelegate* delegateBlSize = new chBlSizeDelegate(this);
     ui->tableView->setItemDelegateForColumn(5,delegateBlSize);
-   //пример обращения к строке 2,2
-   QModelIndex index = model->index(2, 2, QModelIndex());
    //отслеживание изменений
    connect(ui->tableView->model(), SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), this, SLOT(onDataChanged(const QModelIndex&, const QModelIndex&)));
 
@@ -286,7 +284,6 @@ void MainWindow::on_actionSave_triggered()
 {
     //creating new QBytearray to saving
     uint32_t size;
-    uint16_t pages;
     unsigned char A,B,C,D;
     QString fileName;
     QString tmpStr;
@@ -494,7 +491,7 @@ void MainWindow::on_actionSave_triggered()
 unsigned char MainWindow::dualDigitToByte(QString q, int poz)
 {
     unsigned char buf, rez;
-   rez = 0x00;
+   //rez = 0x00;
    if (poz < 3)
      {
         poz = poz *2;
@@ -519,18 +516,17 @@ void MainWindow::on_actionAdd_string_triggered()
     QModelIndex indFrom, indTo;
     QString tmpStr;
     int sel, decsel;
-
-    int recNo;
-    recNo = 0;
+    //int recNo;
+    //recNo = 0;
     if(ui->tableView->model() != nullptr)
     {
        QItemSelectionModel *select = ui->tableView->selectionModel();
        select->selectedRows();
        QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
-       recNo = ui->tableView->model()->rowCount();
+       //recNo = ui->tableView->model()->rowCount();
        if (selection.count() <=0)
        {
-           QMessageBox::warning(this, "Warning","No string selected.");
+           QMessageBox::warning(this, tr("Warning"), tr("No string selected."));
            return;
        }
        // Multiple rows can be selected
@@ -567,7 +563,7 @@ void MainWindow::on_actionDelete_string_triggered()
     QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
     if (selection.count() <=0)
     {
-        QMessageBox::warning(this, "Warning","No string selected.");
+        QMessageBox::warning(this, tr("Warning"), tr("No string selected."));
         return;
     }
     // Multiple rows can be selected
@@ -595,7 +591,7 @@ void MainWindow::on_actionMove_up_triggered()
     QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
     if (selection.count() <=0)
     {
-        QMessageBox::warning(this, "Warning","No string selected.");
+        QMessageBox::warning(this, tr("Warning"), tr("No string selected."));
         return;
     }
     for(int i=0; i< selection.count(); i++)
@@ -627,7 +623,6 @@ void MainWindow::on_actionMove_down_triggered()
   {
     QModelIndex indFrom, indTo;
     QString tmpStr;
-    QBrush setRGB;
     int sel, incsel, rowCount;
     chip_data tmpRec;
     QItemSelectionModel *select = ui->tableView->selectionModel();
@@ -635,14 +630,14 @@ void MainWindow::on_actionMove_down_triggered()
     QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
     if (selection.count() <=0)
     {
-        QMessageBox::warning(this, "Warning","No string selected.");
+        QMessageBox::warning(this, tr("Warning"), tr("No string selected."));
         return;
     }
     for(int i=0; i< selection.count(); i++)
     {
         QModelIndex index = selection.at(i);
         sel = index.row();
-        rowCount = rowCount = ui->tableView->model()->rowCount();
+        rowCount = ui->tableView->model()->rowCount();
         incsel = sel + 1;
         if (index.row() < rowCount -1)
         {
@@ -666,7 +661,7 @@ void MainWindow::on_actionExport_to_CSV_triggered()
 {
     QString fileName;
     QString toCSV = csvHeader;
-    int i,j, rowCount;
+    int j;
     if(ui->tableView->model() != nullptr)
     {
         QModelIndex indFrom;
@@ -675,7 +670,7 @@ void MainWindow::on_actionExport_to_CSV_triggered()
         QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
         if (selection.count() <=0)
         {
-            QMessageBox::warning(this, "Warning","No string selected.");
+            QMessageBox::warning(this, tr("Warning"), tr("No string selected."));
             return;
         }
         select->selectedRows();
@@ -695,12 +690,12 @@ void MainWindow::on_actionExport_to_CSV_triggered()
             ui->tableView->update();
 
     //Saving QString to file
-    ui->statusBar->showMessage("Saving file");
+    ui->statusBar->showMessage(tr("Saving file"));
     fileName = QFileDialog::getSaveFileName(this,
-                                QString::fromUtf8("Открыть файл"),
+                                QString(tr("Save file")),
                                 QDir::currentPath(),
                                 "Data Images (*.csv);;All files (*.*)");
-    ui->statusBar->showMessage("Current file: " + fileName);
+    ui->statusBar->showMessage(tr("Current file: ") + fileName);
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly)) return;
     file.write(toCSV.toUtf8());
@@ -718,7 +713,7 @@ void MainWindow::on_actionExport_to_CSV_2_triggered()
     {
         QModelIndex indFrom;
 
-       rowCount = rowCount = ui->tableView->model()->rowCount();
+       rowCount = ui->tableView->model()->rowCount();
        if (rowCount > 0)
        {
           for (i=0; i < rowCount; i++)
@@ -733,9 +728,9 @@ void MainWindow::on_actionExport_to_CSV_2_triggered()
          }
 
     //Saving QString to file
-    ui->statusBar->showMessage("Saving file");
+    ui->statusBar->showMessage(tr("Saving file"));
     fileName = QFileDialog::getSaveFileName(this,
-                                QString::fromUtf8("Открыть файл"),
+                                QString(tr("Save file")),
                                 QDir::currentPath(),
                                 "Data Images (*.csv);;All files (*.*)");
        ui->statusBar->showMessage("Current file: " + fileName);
@@ -754,12 +749,12 @@ void MainWindow::on_actionImport_from_CSV_triggered()
         QString fileName, fromCSV, tmpStr, separator, chType;
         QModelIndex indFrom;
         int j = 0, recNo, curPoz = -1, fromPoz;
-        ui->statusBar->showMessage("Opening file");
+        ui->statusBar->showMessage(tr("Opening file"));
         fileName = QFileDialog::getOpenFileName(this,
-                                    QString::fromUtf8("Открыть файл"),
+                                    QString(tr("Open file")),
                                     QDir::currentPath(),
                                     "Data Images (*.csv);;All files (*.*)");
-        ui->statusBar->showMessage("Current file: " + fileName);
+        ui->statusBar->showMessage(tr("Current file: ") + fileName);
         QFile file(fileName); // создаем объект класса QFile
         QByteArray data; // Создаем объект класса QByteArray, куда мы будем считывать данные
         if (!file.open(QIODevice::ReadOnly)) // Проверяем, возможно ли открыть наш файл для чтения
@@ -796,7 +791,7 @@ void MainWindow::on_actionImport_from_CSV_triggered()
               chType = tmpStr;
               if (!correctChipTyte(tmpStr))
               {
-                  QMessageBox::warning(this, "Warning","Invalid CSV data file format.");
+                  QMessageBox::warning(this, tr("Warning"), tr("Invalid CSV data file format."));
                   return;
               }
            }
@@ -836,7 +831,7 @@ void MainWindow::on_actionImport_from_CSV_triggered()
 bool MainWindow::correctChipTyte(QString str)
 {
     bool ansver = false;
-    for (QString elem : chType)
+    for (QString elem: chType)
     {
       if(str.compare(elem)==0)
           {

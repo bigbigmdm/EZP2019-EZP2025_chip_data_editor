@@ -57,6 +57,8 @@ HEADERS += \
 FORMS += \
         ezp_chip_editor.ui
 
+TRANSLATIONS += chipEditor_ru.ts
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
@@ -65,4 +67,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resources.qrc
 
-DISTFILES +=
+DISTFILES += \
+    language/chipEditor_ru_RU.ts
