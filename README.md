@@ -3,7 +3,7 @@ Qt based editor  chip database for EZP2019, EZP2019+, EZP2023, EZP2025, MinPro, 
 
 ![Screenshot editor](https://github.com/bigbigmdm/EZP2019-EZP2025_chip_data_editor/blob/main/img/ezp_editor.png)
 
-Press the button ![read](img/open.png) for open the database file (Depending on the name of your programmer device EZP2019.Dat, EZP2020.Dat, EZP2023+.Dat, EZP2025.Dat, XP866+.Dat, MinproI.Dat).
+Press the button ![read](img/open.png) for open the database file (Depending on the name of your programmer device EZP2019.Dat, EZP2023+.Dat, EZP2025.Dat, XP866+.Dat, MinproI.Dat).
 
 For save the changes to binary file press the button save ![save](img/save.png).
 
